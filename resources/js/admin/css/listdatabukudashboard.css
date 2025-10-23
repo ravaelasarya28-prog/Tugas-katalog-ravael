@@ -1,0 +1,296 @@
+/* === CONTAINER UTAMA === */
+.container-list-buku-minimal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
+  gap: 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+  /* Diperbaiki: menghapus margin negatif yang bermasalah */
+}
+
+/* === KARTU BUKU === */
+.buku-card-minimal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 34px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(109, 40, 217, 0.08);
+  border: 1px solid #e9d8fd;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.buku-card-minimal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #7c3aed, #6d28d9, #8b5cf6);
+}
+
+.buku-card-minimal:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(109, 40, 217, 0.15);
+  border-color: #7c3aed;
+}
+
+/* === BADGE NOMOR === */
+.buku-no-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(109, 40, 217, 0.2);
+  transition: all 0.3s ease;
+}
+
+.buku-card-minimal:hover .buku-no-badge {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(109, 40, 217, 0.3);
+}
+
+/* === COVER === */
+.buku-cover-minimal {
+  width: 60px;
+  height: 85px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(109, 40, 217, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.buku-cover-minimal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(transparent, rgba(109, 40, 217, 0.1));
+}
+
+.buku-cover-minimal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.buku-card-minimal:hover .buku-cover-minimal img {
+  transform: scale(1.08);
+}
+
+.buku-card-minimal:hover .buku-cover-minimal {
+  box-shadow: 0 8px 20px rgba(109, 40, 217, 0.25);
+}
+
+/* === INFO INTI — COMPACT & NO WASTE SPACE === */
+.buku-info-inti {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* === ITEM INFO === */
+.buku-info-item {
+  font-size: 15px;
+  color: #2d1b69;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+
+.buku-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8b5cf6;
+  margin-bottom: 4px;
+  font-weight: 700;
+  background: #f5f3ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* === DATA PENDEK — TIDAK WRAP === */
+.buku-info-item:not(.judul) .buku-info-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #5b4b8a;
+}
+
+/* === TOMBOL AKSI === */
+.buku-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.btn-edit-minimal {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.btn-edit-minimal:hover {
+  background: #7c3aed;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3);
+}
+
+.btn-delete-minimal {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.btn-delete-minimal:hover {
+  background: #dc2626;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* === STATUS BADGE === */
+.buku-status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.status-tersedia {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #dcfce7;
+}
+
+.status-dipinjam {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1200px) {
+  .container-list-buku-minimal {
+    grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .container-list-buku-minimal {
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  }
+
+  .buku-info-inti {
+    grid-template-columns: 2fr 1.2fr 1fr 0.8fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-list-buku-minimal {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .buku-card-minimal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .buku-cover-minimal {
+    width: 100px;
+    height: 140px;
+    align-self: center;
+  }
+
+  .buku-info-inti {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .buku-info-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buku-card-actions {
+    margin-left: 0;
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .btn-action {
+    flex: 1;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-list-buku-minimal {
+    padding: 10px;
+    gap: 16px;
+  }
+
+  .buku-card-minimal {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .buku-cover-minimal {
+    width: 80px;
+    height: 112px;
+  }
+
+  .buku-no-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}

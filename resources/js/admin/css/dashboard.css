@@ -1,0 +1,141 @@
+/* ===== Dashboard Buku dengan Animasi Background ===== */
+
+.dashboard-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 2rem;
+  color: #1e293b;
+}
+
+/* Grid daftar buku */
+.container-list-buku-minimal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card buku */
+.buku-card-minimal {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* Animasi background lembut (shimmer gradient) */
+.buku-card-minimal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #f1f5f9, #e2e8f0, #f1f5f9);
+  background-size: 200% 200%;
+  animation: bgMove 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.buku-card-minimal > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover efek */
+.buku-card-minimal:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+}
+
+/* Cover buku */
+.buku-cover-minimal {
+  width: 90px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.buku-card-minimal:hover .buku-cover-minimal {
+  transform: scale(1.05);
+}
+
+.buku-cover-minimal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Informasi buku */
+.buku-info-inti {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buku-info-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.buku-info-value {
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.buku-info-item.judul .buku-info-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Badge nomor */
+.buku-no-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #3b82f6, #38bdf8);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+/* Animasi */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pesan kosong */
+.no-data-message {
+  text-align: center;
+  color: #64748b;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
